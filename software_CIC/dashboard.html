@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>CIC</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo_menu">
+            <div class="icon">
+                <img class="icon" src="./img/menu.png" alt="">
+            </div>
+            <div class="logo">
+                <img class="logo" src="./img/logo.png" alt="">
+            </div>
+        </div>
+      
+        <div class="pergunta">
+            <input type="text" id="search" name="search">
+            <i class="fas fa-search"></i>
+        </div>
+           
+        <button class="mode" onclick="modeVisual()">Dark mode</button>
+
+        <div class="suport_exit">
+            <div class="suporte">
+                <img class="suporte" src="./img/ia.png" alt="">
+            </div>
+            <div class="exit">
+                <img class="exit" src="./img/exit.png" alt="">
+            </div>
+        </div>
+    </header>
+
+    <section class="info">
+        <div class="processos">
+            <h2>Processo Administrativo</h2>
+            <h3>R$ 30.00,00</h3>
+            <p>3 Processos em aberto</p>
+        </div>
+        <div class="credito">
+            <h2>Pedidos de Crédito</h2>
+            <h3>R$ 15.00,00</h3>
+            <p>3 Pedidos em aberto</p>
+        </div>
+        <div class="saldo">
+            <h2>Saldo de Crédito</h2>
+            <h3>R$ 8.000,00</h3>
+            <p>3 Pedidos em aberto</p>
+        </div>
+    </section>
+
+    <section class="grafic">
+        <div class="chart-container">
+            <h2>Distribuição de Recursos</h2>
+            <canvas id="myPieChart" width="400" height="400"></canvas>
+            <script>
+                const labels = ['Processos Administrativos', 'Crédito', 'Saldo'];
+                const proc_adm = 30000;
+                const credito = 15000;
+                const saldo = 8000;
+
+                var ctx = document.getElementById('myPieChart').getContext('2d');
+                var myPieChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Distribuição',
+                            data: [proc_adm, credito, saldo],
+                            backgroundColor: ['#88BFD1', '#399FD9', '#3E7AD3'],
+                            borderColor: '#ffffff',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(tooltipItem) {
+                                        return tooltipItem.label + ': R$ ' + tooltipItem.raw;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            </script>
+        </div>
+
+        <div class="chart-container">
+            <h2>Divergências</h2>
+            <canvas id="myBarChart" width="400" height="400"></canvas>
+            <script>
+                const labelss = ['Facil', 'Medio', 'Dificil'];
+                const values = [88, 30, 64];
+                
+                const ctxBar = document.getElementById('myBarChart').getContext('2d');
+                new Chart(ctxBar, {
+                    type: 'bar',
+                    data: {
+                        labels: labelss,
+                        datasets: [{
+                            label: 'Dificuldade',
+                            data: values,
+                            backgroundColor: ['#88F693', '#FFC164', '#FB8080'],
+                            borderColor: ['#00FF00', '#FF5900', '#FF0000'],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            x: {
+                                beginAtZero: true
+                            },
+                            y: {
+                                beginAtZero: true
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                            },
+                            tooltip: {
+                                enabled: true
+                            }
+                        }
+                    }
+                });
+            </script>
+        </div>
+
+        <div class="chart-container">
+            <h2>Evolução Semanal</h2>
+            <canvas id="myLineChart" width="400" height="400"></canvas>
+            <script>
+                const timeLabels = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'];
+                const progressValues = [10, 25, 50, 75, 60, 90];
+                const progressValues2 = [20, 35, 45, 65, 70, 80]; 
+
+                const ctxLine = document.getElementById('myLineChart').getContext('2d');
+                new Chart(ctxLine, {
+                    type: 'line',
+                    data: {
+                        labels: timeLabels,
+                        datasets: [
+                            {
+                                label: 'Divergências solucionadas',
+                                data: progressValues,
+                                backgroundColor: 'rgba(62, 122, 211, 0.2)',
+                                borderColor: '#3E7AD3',
+                                borderWidth: 2,
+                                fill: true,
+                                tension: 0.4,
+                                pointBackgroundColor: '#ffffff',
+                                pointBorderColor: '#3E7AD3',
+                                pointBorderWidth: 2,
+                            },
+                            {
+                                label: 'Divergências geradas',
+                                data: progressValues2,
+                                backgroundColor: 'rgba(57, 159, 217, 0.2)',
+                                borderColor: '#399FD9',
+                                borderWidth: 2,
+                                fill: true,
+                                tension: 0.4,
+                                pointBackgroundColor: '#ffffff',
+                                pointBorderColor: '#399FD9',
+                                pointBorderWidth: 2,
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            x: {
+                                beginAtZero: true
+                            },
+                            y: {
+                                beginAtZero: true
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                            },
+                            tooltip: {
+                                enabled: true
+                            }
+                        }
+                    }
+                });
+            </script>
+        </div>
+    </section>
+
+    <div id="chatPopup" class="chat-popup">
+        <div class="popup-wrapper">
+            <div class="popup-header">
+                <h2>Bem-vindo à Inteligência Artificial da CIC</h2>
+                <button class="close-popup">Sair</button>
+            </div>
+            <div class="popup-content">
+                <p>Criamos esta novidade em nosso sistema para que você possa tirar dúvidas tanto da plataforma em si quanto dúvidas relacionadas à contabilidade.</p>
+            </div>
+            <div id="chatContainer" class="chat-container"></div>
+            <input type="text" id="userInput" placeholder="Digite sua mensagem...">
+            <button class="send-button" onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
+    
+   <script>
+    function openPopup() {
+    document.getElementById('chatPopup').style.display = 'block';
+}
+
+function closePopup() {
+    document.getElementById('chatPopup').style.display = 'none';
+}
+
+function sendMessage() {
+    const input = document.getElementById('userInput');
+    const chatContainer = document.getElementById('chatContainer');
+    
+    if (input.value.trim() !== '') {
+        const message = document.createElement('div');
+        message.textContent = input.value;
+        chatContainer.appendChild(message);
+        input.value = '';
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+}
+
+document.querySelector('.suporte img').addEventListener('click', openPopup);
+document.querySelector('.close-popup').addEventListener('click', closePopup);
+
+   </script>
+
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
+

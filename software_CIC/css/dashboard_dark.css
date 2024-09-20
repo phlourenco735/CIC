@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #0f0f28; 
+    color: #e0e0e0;
+    margin: 0;
+    padding-top: 100px; 
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #1a1a2e; 
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.logo_menu {
+    display: flex;
+    align-items: center;
+}
+
+.logo img, .icon img {
+    height: 40px;
+    margin-right: 20px;
+}
+
+.pergunta {
+    display: flex;
+    align-items: center;
+}
+
+.pergunta input {
+    border-radius: 8px;
+    padding: 5px;
+    font-size: 16px;
+    background-color: #d6d6d6; 
+    color: #39D98A;
+    border: 1px solid #4c4f4c;
+}
+
+.pergunta i {
+    color: #39D98A;
+    margin-left: 10px;
+}
+
+.mode {
+    padding: 10px 20px;
+    background-color: #f0f0f0; 
+    color: #3c9b6f; 
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; 
+}
+
+.mode:hover {
+    background-color: #41d58b; 
+    color: #ffffff; 
+    transform: scale(1.05); 
+}
+
+.mode:active {
+    background-color: #36b574; 
+    transform: scale(0.95);
+}
+
+.suport_exit {
+    display: flex;
+    align-items: center;
+}
+
+.suport_exit img {
+    height: 40px;
+    margin-left: 10px;
+}
+
+.info {
+    display: flex;
+    overflow-x: auto; 
+    overflow-y: hidden; 
+    justify-content: center;
+    align-items: center;
+    background-color: #12356a; 
+    width: 90%;
+    height: 150px;
+    max-width: 1300px;
+    border-radius: 10px;
+    gap: 24px;
+}
+
+.processos, .credito, .saldo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 8px;
+    color: #ffffff; 
+    height: 120px;
+    width: 300px;
+    flex-shrink: 0;
+}
+
+.processos {
+    background-color: #3c9b6f; 
+}
+
+.credito {
+    background-color: #2c8458; 
+}
+
+.saldo {
+    background-color: #1b6d48; 
+}
+
+h2, h3, p {
+    font-size: 16px;
+}
+
+.grafic {
+    display: flex; 
+    justify-content: space-around; 
+    gap: 20px; 
+    padding: 20px;
+    background-color: #10243a; 
+}
+
+.chart-container {
+    background-color: #12356a; 
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(39, 55, 202, 0.5);
+    border-radius: 8px;
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chart-container h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #ffffff; 
+}
+
+.chat-popup {
+    display: none; 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7); 
+    width: 90%; 
+    max-width: 500px; 
+    border-radius: 10px;
+    z-index: 1001;
+}
+
+.popup-wrapper {
+    background-color: #1a1a2e;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #3c9b6f; 
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.popup-content {
+    padding: 20px;
+    color: #ffffff; 
+    text-align: center; 
+}
+
+.chat-container {
+    height: 200px; 
+    overflow-y: auto; 
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    width: calc(100% - 90px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.send-button {
+    padding: 10px 20px;
+    background-color: #3c9b6f; 
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.send-button:hover {
+    background-color: #41d58b; 
+}
+
+.close-popup {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+@media (max-width: 1200px) {
+    .info {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .processos, .credito, .saldo {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+    }
+
+    .chart-container {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    input[type="text"] {
+        width: calc(100% - 20px);
+        margin-right: 0;
+    }
+
+    .chat-popup {
+        width: 90%;
+        max-width: 400px;
+    }
+}
+
